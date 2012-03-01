@@ -1,0 +1,63 @@
+CSV - standard? No RFC, just Excel
+----------------------------------
+
+pre-csv module (introduced 2.3)
+-------------------------------
+
+writing: 01a.py
+reading: 01b.py
+
+Pros:
++ Simple; Python one-liner
+
+Cons:
++ Misses all the corner cases (non-string, embedded delimiters etc.)
+  - Embedded commas
+  - Embedded quotes
+  - non-string types
+
+
+csv module for dummies
+----------------------
+
+Writing: 02a.py
+Reading: 02b.py
+
+Pros:
++ Just works
++ Not too much overhead
++ Handles non-string types - at least for writing
++ Handles embedded delimiters
+
+Cons:
++ We'll come to that
+
+
+csv module with extras
+----------------------
+
+Using different separators & delimiters: dialects
+Our requirement: use pipe-delimited; always quote; ignore spaces at the beginning of a field when reading
+
+Writing: 03a.py
+Reading: 03b.py
+
+Add your own informal dialect:
+
+Writing: 03c.py
+Reading: 03c.py
+
+You can always create subclasses of one of the existing Dialect classes
+
+
+Dictionary Reading
+------------------
+
+Common requirement: drop the rows into a dictionary, using the fields of the
+first row as the dictionary keys. Common approach: read first row; dict (zip (...))
+
+04a.py
+
+But this is such a common requirement that there are reader / writer subclasses which
+do this: DictReader & DictWriter
+

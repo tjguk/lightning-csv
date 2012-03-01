@@ -2,7 +2,7 @@
 import os, sys
 import csv
 
-FILENAME = "02.csv"
+FILENAME = "03.csv"
 
 data = [
   ("Item", "Quantity"),
@@ -13,7 +13,7 @@ data = [
 ]
 
 with open (FILENAME, "wb") as f:
-  writer = csv.writer (f)
+  writer = csv.writer (f, delimiter="|", quoting=csv.QUOTE_ALL, skipinitialspace=True)
   writer.writerows (data)
 
 os.startfile (FILENAME)

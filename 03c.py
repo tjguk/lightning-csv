@@ -2,7 +2,7 @@
 import os, sys
 import csv
 
-FILENAME = "02.csv"
+FILENAME = "03.csv"
 
 data = [
   ("Item", "Quantity"),
@@ -12,8 +12,10 @@ data = [
   ("Apples, Golden Delicious", 5),
 ]
 
+csv.register_dialect ("QuotedPiper", delimiter="|", quoting=csv.QUOTE_ALL)
+
 with open (FILENAME, "wb") as f:
-  writer = csv.writer (f)
+  writer = csv.writer (f, dialect="QuotedPiper")
   writer.writerows (data)
 
 os.startfile (FILENAME)

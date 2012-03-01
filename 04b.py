@@ -2,7 +2,7 @@
 import os, sys
 import csv
 
-FILENAME = "02.csv"
+FILENAME = "04.csv"
 
 data = [
   ("Item", "Quantity"),
@@ -16,4 +16,9 @@ with open (FILENAME, "wb") as f:
   writer = csv.writer (f)
   writer.writerows (data)
 
-os.startfile (FILENAME)
+with open (FILENAME) as f:
+  reader = csv.DictReader (f)
+  print reader.fieldnames
+  for row in reader:
+    print row
+
