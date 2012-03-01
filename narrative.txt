@@ -61,3 +61,17 @@ first row as the dictionary keys. Common approach: read first row; dict (zip (..
 But this is such a common requirement that there are reader / writer subclasses which
 do this: DictReader & DictWriter
 
+
+Unicode
+-------
+
+Not so good. Py2.x: you need to encode; csv simply applies str () to whatever you
+pass it. Doesn't help to open the file via codecs; the str () happens before
+the data hits the file
+
+05a.py
+
+Py3.x - rather better - notice the newline="", roughly equivalent to the "wb"
+file mode in Py2.x, to avoid blank lines in-between.
+
+05b.py
